@@ -14,14 +14,10 @@ public class ImageDisplayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_display);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
 
         ImageView imageView = (ImageView) findViewById(R.id.ivFullImage);
         ImageResult imageResult =  (ImageResult) getIntent().getSerializableExtra("img_res");
         Picasso.with(this).load(imageResult.getImgUrl())
                 .into(imageView);
-
-        //getSupportActionBar().hide();
     }
 }

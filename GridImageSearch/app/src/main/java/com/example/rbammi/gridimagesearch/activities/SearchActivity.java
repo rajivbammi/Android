@@ -43,16 +43,13 @@ public class SearchActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //return super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //return super.onOptionsItemSelected(item);
-        System.out.println("hete");
-        switch(item.getItemId()) {
+       switch(item.getItemId()) {
             case R.id.miSettings:
                 showSettingsScreen();
                 return true;
@@ -76,9 +73,6 @@ public class SearchActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //super.onActivityResult(requestCode, resultCode, data);
-        //System.out.println("inside onActivityResult");
-        //System.out.println(data.getStringExtra("imageSize"));
         gFilterImageSize = data.getStringExtra("imageSize");
         gFilterColorFilter = data.getStringExtra("colorFilter");
         gFilterImageType = data.getStringExtra("imageType");
@@ -151,6 +145,5 @@ public class SearchActivity extends AppCompatActivity {
         Toast.makeText(this, "Finding images for " + query, Toast.LENGTH_SHORT).show();
         imageAdapter.clear();
         fetchData(1, query);
-        //Intent i = new Intent(R.class.ImageDisplayActivity);
     }
 }
