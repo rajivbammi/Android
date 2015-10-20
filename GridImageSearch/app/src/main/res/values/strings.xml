@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GridImageSearch</string>
+    <string name="searchBtnLabel">Search</string>
+    <string name="searchHintTxt">Enter Search Query</string>
+    <string name="imgTvLabel">Image title</string>
+    <string name="title_activity_image_display">ImageDisplayActivity</string>
+</resources>
