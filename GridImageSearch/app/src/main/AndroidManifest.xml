@@ -22,6 +22,8 @@
             android:label="@string/title_activity_image_display"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity android:name=".activities.SettingsActivity" >
+        </activity>
     </application>
 
 </manifest>

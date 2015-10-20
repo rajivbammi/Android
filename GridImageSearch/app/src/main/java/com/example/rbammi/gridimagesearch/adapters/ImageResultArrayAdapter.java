@@ -43,6 +43,13 @@ public class ImageResultArrayAdapter extends ArrayAdapter<ImageResult> {
                 .load(imgRes.getThumbUrl())
                 .into(imageView);
 
+        /*imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("inside click");
+            }
+        });*/
+
         TextView textView = (TextView) convertView.findViewById(R.id.tvTitle);
         textView.setText(Html.fromHtml(imgRes.getTitle()));
 

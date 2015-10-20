@@ -4,4 +4,9 @@
     <string name="searchHintTxt">Enter Search Query</string>
     <string name="imgTvLabel">Image title</string>
     <string name="title_activity_image_display">ImageDisplayActivity</string>
+    <string name="lbl_image_size">Image Size</string>
+    <string name="lbl_color_filter">Color Filter</string>
+    <string name="lbl_image_type">Image Type</string>
+    <string name="lbl_site_filter">Site Filter</string>
+    <string name="lbl_save">Save</string>
 </resources>

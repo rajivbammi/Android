@@ -2,11 +2,60 @@
 <items version="2" >
 
     <item
-        jar="/Users/rbammi/projects/Android/GridImageSearch/app/build/intermediates/exploded-aar/com.android.support/design/23.0.1/jars/classes.jar"
+        jar="/Users/rbammi/.gradle/caches/modules-2/files-2.1/cz.msebera.android/httpclient/4.3.6/526a9f794eab830eae4f23a62c572878b3f491ab/httpclient-4.3.6.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="526a9f794eab830eae4f23a62c572878b3f491ab">
+        <dex dex="/Users/rbammi/projects/Android/Android/GridImageSearch/app/build/intermediates/pre-dexed/debug/httpclient-4.3.6-de96be16cb964a2ae39c44949f7cfe09fe78d8db.jar" />
+    </item>
+    <item
+        jar="/Users/rbammi/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/Users/rbammi/projects/Android/Android/GridImageSearch/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-abe25e81963a3b49299b9ce92cdae60b911670d5.jar" />
+    </item>
+    <item
+        jar="/Users/rbammi/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/rbammi/projects/Android/Android/GridImageSearch/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-9cec491c73ed3a8c3b7d12c172e6c7c7c16370c6.jar" />
+    </item>
+    <item
+        jar="/Users/rbammi/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.9/386a4339ffe52d5d63e80f9bed8d2b1d1a418249/android-async-http-1.4.9.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
+        <dex dex="/Users/rbammi/projects/Android/Android/GridImageSearch/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.9-2523b59401c0dfffe271078a3e60bdafd954ff8f.jar" />
+    </item>
+    <item
+        jar="/Users/rbammi/projects/Android/Android/GridImageSearch/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/Users/rbammi/projects/Android/Android/GridImageSearch/app/build/intermediates/pre-dexed/debug/classes-4c108715ef6a8dfa1a5c2e04645807daa95a4e8f.jar" />
+    </item>
+    <item
+        jar="/Users/rbammi/projects/Android/Android/GridImageSearch/app/build/intermediates/exploded-aar/com.android.support/design/23.0.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="e5c61a3169221a89654ffcaaed47bba51cf071ad">
-        <dex dex="/Users/rbammi/projects/Android/GridImageSearch/app/build/intermediates/pre-dexed/debug/classes-bda709a5f43d13f6647e9fb7328c0da45e5bac54.jar" />
+        <dex dex="/Users/rbammi/projects/Android/Android/GridImageSearch/app/build/intermediates/pre-dexed/debug/classes-2b66e50f075fb5272044e989b606c945a8d05bef.jar" />
+    </item>
+    <item
+        jar="/Users/rbammi/projects/Android/Android/GridImageSearch/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/Users/rbammi/projects/Android/Android/GridImageSearch/app/build/intermediates/pre-dexed/debug/classes-fbaa13e451c181d7c7cfb0d550df073722a41153.jar" />
+    </item>
+    <item
+        jar="/Users/rbammi/projects/Android/Android/GridImageSearch/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/Users/rbammi/projects/Android/Android/GridImageSearch/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-fe9654e577c0c6b97451880c90e40ba7c628060c.jar" />
     </item>
 
 </items>
