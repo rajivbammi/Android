@@ -9,7 +9,8 @@
         android:layout_height="50dp"
         android:id="@+id/ivProfileImage"
         android:layout_alignParentLeft="true"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/ic_launcher"
+        android:padding="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,7 +29,6 @@
         android:text="@string/lbl_body"
         android:layout_below="@id/tvUserName"
         android:textSize="12sp"
-        android:layout_alignLeft="@id/tvUserName"
-        android:layout_alignBottom="@id/ivProfileImage"/>
+        android:layout_alignLeft="@id/tvUserName" />
 
 </RelativeLayout>
