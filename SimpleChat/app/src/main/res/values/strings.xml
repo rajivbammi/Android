@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SimpleChat</string>
+    <string name="message_hint">Enter your message</string>
+    <string name="send">Send</string>
+    <string name="profile_other">Other profile pic</string>
+    <string name="profile_me">My profile pic</string>
+</resources>
