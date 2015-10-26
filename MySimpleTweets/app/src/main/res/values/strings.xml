@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SimpleTweets</string>
+    <string name="login_label">Connect with Twitter</string>
+    <string name="title_activity_timeline">TimelineActivity</string>
+    <string name="lbl_username">Username</string>
+    <string name="lbl_body">body</string>
+
+</resources>
