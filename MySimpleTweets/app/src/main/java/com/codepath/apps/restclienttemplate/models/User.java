@@ -11,7 +11,7 @@ public class User {
     private long uid;
     private String screenName;
     private String profileImageUrl;
-
+    
     public String getName() {
         return name;
     }

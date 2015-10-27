@@ -31,4 +31,20 @@
         android:textSize="12sp"
         android:layout_alignLeft="@id/tvUserName" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvTime"
+        android:text="@string/label_time"
+        android:layout_alignParentRight="true"
+        android:textSize="12sp"
+        android:paddingRight="5dp"/>
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:id="@+id/ivTime"
+        android:src="@drawable/ic_time"
+        android:layout_toLeftOf="@id/tvTime" />
+
 </RelativeLayout>

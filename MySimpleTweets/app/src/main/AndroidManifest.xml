@@ -33,12 +33,15 @@
             android:theme="@style/AppTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:host="cpsimpletweet"
                     android:scheme="oauth" />
@@ -46,8 +49,11 @@
         </activity>
         <activity
             android:name=".TimelineActivity"
+            android:icon="@drawable/ic_launcher"
             android:label="@string/title_activity_timeline"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity android:name=".ComposeActivity" >
         </activity>
     </application>
 

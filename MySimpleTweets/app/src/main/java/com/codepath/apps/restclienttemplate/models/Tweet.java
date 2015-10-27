@@ -12,16 +12,15 @@ import java.util.ArrayList;
 public class Tweet {
     private String body;
     private Long uid;
-
-    public User getUser() {
-        return user;
-    }
-
     private User user;
     private String createdAt;
 
     public String getBody() {
         return body;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public Long getUid() {

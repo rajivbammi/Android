@@ -6,5 +6,8 @@
     <string name="title_activity_timeline">TimelineActivity</string>
     <string name="lbl_username">Username</string>
     <string name="lbl_body">body</string>
+    <string name="label_compose">What\'s happening?</string>
+    <string name="label_submit">Post</string>
+    <string name="label_time">Time...</string>
 
 </resources>
