@@ -47,10 +47,6 @@ public class TimelineActivity extends AppCompatActivity {
                 // Add whatever code is needed to append new items to your AdapterView
                 //customLoadMoreDataFromApi(page);
                 long max_id = Tweet.getMaxId() -1;
-                Log.i("DEBUG", "Inside load more...." + max_id);
-                Log.i("DEBUG", "Inside load more...." + tweets.size());
-                Log.i("DEBUG", "Inside load more...." + tweets);
-
                 populateTimeLine(max_id);
                 return true; // ONLY if more data is actually being loaded; false otherwise.
             }

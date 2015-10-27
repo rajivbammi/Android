@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,9 +21,9 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import org.apache.http.Header;
 
 public class ComposeActivity extends AppCompatActivity {
-
     EditText etCompose;
     TextView tvCount;
+    Button btCompose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class ComposeActivity extends AppCompatActivity {
 
         etCompose = (EditText) findViewById(R.id.etCompose);
         tvCount = (TextView) findViewById(R.id.tvCount);
+        btCompose = (Button) findViewById(R.id.btnCompose);
 
         etCompose.addTextChangedListener(new TextWatcher() {
             @Override
@@ -40,12 +42,16 @@ public class ComposeActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-               // int c = 140 - start;
-               // tvCount.setText(c.toString());
-                if (start > 140) {
+                int MAX_LIMIT = 140;
+                tvCount.setText(Integer.toString(MAX_LIMIT - count - start));
+                if (start + count > MAX_LIMIT ) {
                     etCompose.setTextColor(Color.RED);
+                    tvCount.setTextColor(Color.RED);
+                    btCompose.setEnabled(false);
                 } else {
-                    etCompose.setTextColor(Color.BLACK);
+                    etCompose.setTextColor(Color.GRAY);
+                    tvCount.setTextColor(Color.GRAY);
+                    btCompose.setEnabled(true);
                 }
             }
 
