@@ -1,13 +1,20 @@
-package com.codepath.apps.restclienttemplate;
+package com.codepath.apps.restclienttemplate.Activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.codepath.apps.restclienttemplate.R;
+import com.codepath.apps.restclienttemplate.TwitterApplication;
+import com.codepath.apps.restclienttemplate.TwitterClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import org.apache.http.Header;
@@ -15,6 +22,7 @@ import org.apache.http.Header;
 public class ComposeActivity extends AppCompatActivity {
 
     EditText etCompose;
+    TextView tvCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +30,30 @@ public class ComposeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_compose);
 
         etCompose = (EditText) findViewById(R.id.etCompose);
+        tvCount = (TextView) findViewById(R.id.tvCount);
+
+        etCompose.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+               // int c = 140 - start;
+               // tvCount.setText(c.toString());
+                if (start > 140) {
+                    etCompose.setTextColor(Color.RED);
+                } else {
+                    etCompose.setTextColor(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     public void postTweet(View view) {

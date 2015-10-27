@@ -7,4 +7,5 @@ Twitter android client
 [X] User can click a “Compose” icon in the Action Bar on the top right
 [X] User can then enter a new tweet and post this to twitter
 [X] User is taken back to home timeline with new tweet visible in timeline
+[X] Links in tweets are clickable and will launch the web browser (see autolink)
 ![Video Walkthrough](walkthrough.gif)

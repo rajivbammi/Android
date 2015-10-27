@@ -1,4 +1,4 @@
-package com.codepath.apps.restclienttemplate;
+package com.codepath.apps.restclienttemplate.Utils;
 
 /**
  * Created by rbammi on 10/26/15.

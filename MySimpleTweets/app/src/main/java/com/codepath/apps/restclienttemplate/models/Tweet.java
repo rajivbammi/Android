@@ -1,4 +1,4 @@
-package com.codepath.apps.restclienttemplate.models;
+package com.codepath.apps.restclienttemplate.Models;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,6 +14,7 @@ public class Tweet {
     private Long uid;
     private User user;
     private String createdAt;
+    private static long max_id;
 
     public String getBody() {
         return body;
@@ -53,6 +54,7 @@ public class Tweet {
                 Tweet tweet = Tweet.fromJson(jsonObject);
                 if (tweet != null) {
                     tweets.add(tweet);
+                    max_id = tweet.getUid();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -62,4 +64,7 @@ public class Tweet {
         return tweets;
     }
 
+    public static long getMaxId() {
+        return max_id;
+    }
 }

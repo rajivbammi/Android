@@ -1,4 +1,4 @@
-package com.codepath.apps.restclienttemplate;
+package com.codepath.apps.restclienttemplate.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,12 +8,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.apps.restclienttemplate.Listener.EndlessScrollListener;
+import com.codepath.apps.restclienttemplate.R;
+import com.codepath.apps.restclienttemplate.Adapter.TweetsArrayAdapter;
+import com.codepath.apps.restclienttemplate.TwitterApplication;
+import com.codepath.apps.restclienttemplate.TwitterClient;
+import com.codepath.apps.restclienttemplate.Models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -29,13 +33,29 @@ public class TimelineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
-
-        populateTimeLine();
+        setUp();
+        populateTimeLine(0);
     }
 
     public void setUp() {
         client = TwitterApplication.getRestClient();
         lvTweets = (ListView) findViewById(R.id.lvTimeline);
+        lvTweets.setOnScrollListener(new EndlessScrollListener() {
+            @Override
+            public boolean onLoadMore(int page, int totalItemsCount) {
+                // Triggered only when new data needs to be appended to the list
+                // Add whatever code is needed to append new items to your AdapterView
+                //customLoadMoreDataFromApi(page);
+                long max_id = Tweet.getMaxId() -1;
+                Log.i("DEBUG", "Inside load more...." + max_id);
+                Log.i("DEBUG", "Inside load more...." + tweets.size());
+                Log.i("DEBUG", "Inside load more...." + tweets);
+
+                populateTimeLine(max_id);
+                return true; // ONLY if more data is actually being loaded; false otherwise.
+            }
+        });
+
         tweets = new ArrayList<>();
         aTweets = new TweetsArrayAdapter(this, tweets);
         lvTweets.setAdapter(aTweets);
@@ -48,22 +68,21 @@ public class TimelineActivity extends AppCompatActivity {
         return true;
     }
 
-    public void populateTimeLine() {
-        setUp();
-        client.getHomeTimelines(new JsonHttpResponseHandler() {
+    public void populateTimeLine(long since_id) {
+        client.getHomeTimelines(since_id, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 //super.onSuccess(statusCode, headers, response);
-                    Log.i("Debug", "response: " + response.toString());
-                    Log.i("Debug", "length: " + response.length());
+                    //Log.i("Debug", "response: " + response.toString());
+                    //Log.i("Debug", "length: " + response.length());
                     aTweets.addAll(Tweet.fromJsonArray(response));
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject obj) {
-                //super.onFailure(statusCode, headers, responseString, throwable);
-
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                //super.onFailure(statusCode, headers, throwable, errorResponse);
+                Log.i("DEBUG", errorResponse.toString());
             }
         });
     }
@@ -80,7 +99,9 @@ public class TimelineActivity extends AppCompatActivity {
         if (requestCode == REQUEST_CODE_COMPOSE && resultCode == RESULT_OK) {
             Log.i("DEBUG", "REQUEST_CODE: "+ requestCode);
             Log.i("DEBUG", "SUCCESS_CODE: " + resultCode);
-            populateTimeLine();
+            aTweets.clear();
+            tweets.clear();
+            populateTimeLine(0);
         }
     }
 }

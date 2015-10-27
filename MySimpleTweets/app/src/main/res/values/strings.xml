@@ -9,5 +9,6 @@
     <string name="label_compose">What\'s happening?</string>
     <string name="label_submit">Post</string>
     <string name="label_time">Time...</string>
+    <string name="label_count">120</string>
 
 </resources>
