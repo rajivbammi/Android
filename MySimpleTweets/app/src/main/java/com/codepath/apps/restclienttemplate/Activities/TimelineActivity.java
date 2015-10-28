@@ -2,6 +2,7 @@ package com.codepath.apps.restclienttemplate.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -28,6 +29,7 @@ public class TimelineActivity extends AppCompatActivity {
     private ArrayList<Tweet> tweets;
     private ListView lvTweets;
     private int REQUEST_CODE_COMPOSE = 1001;
+    private SwipeRefreshLayout swipeContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,21 +42,36 @@ public class TimelineActivity extends AppCompatActivity {
     public void setUp() {
         client = TwitterApplication.getRestClient();
         lvTweets = (ListView) findViewById(R.id.lvTimeline);
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.SwipeContainer);
+        tweets = new ArrayList<>();
+        aTweets = new TweetsArrayAdapter(this, tweets);
+        lvTweets.setAdapter(aTweets);
+
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                aTweets.clear();
+                populateTimeLine(0);
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
+
         lvTweets.setOnScrollListener(new EndlessScrollListener() {
             @Override
             public boolean onLoadMore(int page, int totalItemsCount) {
                 // Triggered only when new data needs to be appended to the list
                 // Add whatever code is needed to append new items to your AdapterView
                 //customLoadMoreDataFromApi(page);
-                long max_id = Tweet.getMaxId() -1;
+                long max_id = Tweet.getMaxId() - 1;
                 populateTimeLine(max_id);
                 return true; // ONLY if more data is actually being loaded; false otherwise.
             }
         });
-
-        tweets = new ArrayList<>();
-        aTweets = new TweetsArrayAdapter(this, tweets);
-        lvTweets.setAdapter(aTweets);
     }
 
     @Override
@@ -73,12 +90,14 @@ public class TimelineActivity extends AppCompatActivity {
                     //Log.i("Debug", "response: " + response.toString());
                     //Log.i("Debug", "length: " + response.length());
                     aTweets.addAll(Tweet.fromJsonArray(response));
+                    swipeContainer.setRefreshing(false);
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
                 //super.onFailure(statusCode, headers, throwable, errorResponse);
-                Log.i("DEBUG", errorResponse.toString());
+                Log.i("DEBUG", "ERROR" +errorResponse.toString());
+                swipeContainer.setRefreshing(false);
             }
         });
     }
@@ -93,8 +112,8 @@ public class TimelineActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_COMPOSE && resultCode == RESULT_OK) {
-            Log.i("DEBUG", "REQUEST_CODE: "+ requestCode);
-            Log.i("DEBUG", "SUCCESS_CODE: " + resultCode);
+           // Log.i("DEBUG", "REQUEST_CODE: "+ requestCode);
+           // Log.i("DEBUG", "SUCCESS_CODE: " + resultCode);
             aTweets.clear();
             tweets.clear();
             populateTimeLine(0);
