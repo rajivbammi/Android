@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.Activities.ProfileActivity;
 import com.codepath.apps.restclienttemplate.Adapter.TweetsArrayAdapter;
@@ -38,14 +37,13 @@ public class HomeTimelineFragment extends TweetsListFragment {
             public void onProfileImgSelected(User user) {
                 Intent i = new Intent(getContext(), ProfileActivity.class);
                 i.putExtra("user", user);
-                Toast.makeText(getContext(), "Event fired", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "Event fired", Toast.LENGTH_SHORT).show();
                 startActivity(i);
             }
         });
 
         client = TwitterApplication.getRestClient();
         populateTimeLine(0);
-
     }
 
     @Override
@@ -60,9 +58,17 @@ public class HomeTimelineFragment extends TweetsListFragment {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Log.i("DEBUG", "inside refresh of HomeTimelineListFragment");
+                Log.i("DEBUG", "inside HomeTimeline: refresh of HomeTimelineListFragment");
                 getAdapter().clear();
                 populateTimeLine(0);
+            }
+        });
+
+        setCustomScrollLoadListener(new CustomScrollLoadListener() {
+            @Override
+            public void onCustomScrollLoad(Long maxId) {
+                Log.i("DEBUG", "inside setCustomScrollLoadListener received");
+                populateTimeLine(maxId);
             }
         });
     }

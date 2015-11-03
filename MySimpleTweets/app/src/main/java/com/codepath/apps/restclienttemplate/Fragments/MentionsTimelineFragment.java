@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.Activities.ProfileActivity;
 import com.codepath.apps.restclienttemplate.Adapter.TweetsArrayAdapter;
@@ -38,7 +37,6 @@ public class MentionsTimelineFragment extends TweetsListFragment {
             public void onProfileImgSelected(User user) {
                 Intent i = new Intent(getContext(), ProfileActivity.class);
                 i.putExtra("user", user);
-                Toast.makeText(getContext(), "Event fired", Toast.LENGTH_SHORT).show();
                 startActivity(i);
             }
         });
@@ -60,6 +58,14 @@ public class MentionsTimelineFragment extends TweetsListFragment {
                 Log.i("DEBUG", "inside refresh of MentionsTimelineFragment");
                 getAdapter().clear();
                 populateTimeLine(0);
+            }
+        });
+
+        setCustomScrollLoadListener(new CustomScrollLoadListener() {
+            @Override
+            public void onCustomScrollLoad(Long maxId) {
+                Log.i("DEBUG", "inside Mentions:setCustomScrollLoadListener received");
+                populateTimeLine(maxId);
             }
         });
     }

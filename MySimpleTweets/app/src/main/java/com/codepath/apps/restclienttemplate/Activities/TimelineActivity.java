@@ -34,23 +34,8 @@ public class TimelineActivity extends AppCompatActivity {
         tabStrip.setViewPager(viewPager);
     }
 
+
     public void setUp() {
-        //swipeContainer = (SwipeRefreshLayout) findViewById(R.id.SwipeContainer);
-//        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                //aTweets.clear();
-//                //populateTimeLine(0);
-//                Toast.makeText(getApplicationContext(), "Refreshing", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-        // Configure the refreshing colors
-       /* swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);*/
-
-
         /*lvTweets.setOnScrollListener(new EndlessScrollListener() {
             @Override
             public boolean onLoadMore(int page, int totalItemsCount) {
@@ -70,7 +55,6 @@ public class TimelineActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_timeline, menu);
         return true;
     }
-
 
     public void onProfileView(MenuItem item) {
         Log.i("DEBUG", "Opening Profile...");

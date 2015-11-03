@@ -15,5 +15,4 @@
         android:layout_margin="20dp"
         android:onClick="loginToRest"
         android:text="@string/login_label" />
-
 </RelativeLayout>

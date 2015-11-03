@@ -29,9 +29,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
     public interface ProfileImageListener {
         public void onProfileImgSelected(User user);
     }
-
     private ProfileImageListener listener;
-
     public void setProfileImageListener(ProfileImageListener listener) {
         this.listener = listener;
     }
@@ -43,7 +41,6 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        //return super.getView(position, convertView, parent);
         final Tweet tweet = getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_tweet, parent, false );
