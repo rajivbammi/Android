@@ -22,7 +22,6 @@ public class TweetsListFragment extends android.support.v4.app.Fragment {
     private ArrayList<Tweet> tweets;
     private ListView lvTweets;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //return super.onCreateView(inflater, container, savedInstanceState);
@@ -30,6 +29,10 @@ public class TweetsListFragment extends android.support.v4.app.Fragment {
         lvTweets = (ListView) v.findViewById(R.id.lvTimeline);
         lvTweets.setAdapter(aTweets);
         return v;
+    }
+
+    public TweetsArrayAdapter getAdapter() {
+        return aTweets;
     }
 
     @Override

@@ -26,6 +26,24 @@ public class ProfileActivity extends AppCompatActivity {
     private TwitterClient client;
     User user;
 
+    public void setDefaultUserInfo() {
+        client = TwitterApplication.getRestClient();
+        client.getUserInfo(new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                //super.onSuccess(statusCode, headers, response);
+                user = User.fromJson(response);
+                getSupportActionBar().setTitle("@" + user.getScreenName());
+                populateUserHeader(user);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                //super.onFailure(statusCode, headers, responseString, throwable);
+            }
+        } );
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,27 +60,17 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        client = TwitterApplication.getRestClient();
-        client.getUserInfo(new JsonHttpResponseHandler(){
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                //super.onSuccess(statusCode, headers, response);
-                user = User.fromJson(response);
-                getSupportActionBar().setTitle("@" + user.getScreenName());
-                Log.i("DEBUG", "setting username in title as" + user.getScreenName());
-                populateUserHeader(user);
-            }
+        String screen_name;
+        User user = (User) getIntent().getSerializableExtra("user");
 
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                //super.onFailure(statusCode, headers, responseString, throwable);
-            }
-        } );
-
-
-        String screen_name = getIntent().getStringExtra("screen_name");
-
-        if(savedInstanceState == null) {
+        if (user == null) {
+            setDefaultUserInfo();
+            screen_name = getIntent().getStringExtra("screen_name");
+        } else {
+            screen_name = user.getScreenName();
+            populateUserHeader(user);
+        }
+        if (savedInstanceState == null) {
             Log.i("DEBUG", "savedInstanceState!= NULL");
             UserTimelineFragment userTimelineFragment = UserTimelineFragment.newInstance(screen_name);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -70,6 +78,7 @@ public class ProfileActivity extends AppCompatActivity {
             ft.commit();
         }
     }
+
 
     public void populateUserHeader(User user) {
         ImageView ivProfileImg = (ImageView) findViewById(R.id.ivUserProfileImg);

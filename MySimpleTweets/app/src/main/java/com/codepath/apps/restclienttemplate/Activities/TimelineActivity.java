@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -19,7 +20,7 @@ import com.codepath.apps.restclienttemplate.R;
 public class TimelineActivity extends AppCompatActivity {
 
     private int REQUEST_CODE_COMPOSE = 1001;
-    //private SwipeRefreshLayout swipeContainer;
+    private SwipeRefreshLayout swipeContainer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,22 +35,20 @@ public class TimelineActivity extends AppCompatActivity {
     }
 
     public void setUp() {
-
         //swipeContainer = (SwipeRefreshLayout) findViewById(R.id.SwipeContainer);
-
-
 //        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 //            @Override
 //            public void onRefresh() {
-//                aTweets.clear();
-//                populateTimeLine(0);
+//                //aTweets.clear();
+//                //populateTimeLine(0);
+//                Toast.makeText(getApplicationContext(), "Refreshing", Toast.LENGTH_SHORT).show();
 //            }
 //        });
-//        // Configure the refreshing colors
-//        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
-//                android.R.color.holo_green_light,
-//                android.R.color.holo_orange_light,
-//                android.R.color.holo_red_light);
+        // Configure the refreshing colors
+       /* swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);*/
 
 
         /*lvTweets.setOnScrollListener(new EndlessScrollListener() {

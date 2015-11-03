@@ -9,9 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.codepath.apps.restclienttemplate.Models.Tweet;
+import com.codepath.apps.restclienttemplate.Models.User;
 import com.codepath.apps.restclienttemplate.R;
 import com.codepath.apps.restclienttemplate.Utils.CircleTransform;
-import com.codepath.apps.restclienttemplate.Models.Tweet;
 import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
@@ -24,19 +25,43 @@ import java.util.Locale;
  */
 public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
 
+    public interface ProfileImageListener {
+        // These methods are the different events and need to pass relevant arguments with the event
+        public void onProfileImgSelected(User user);
+    }
+
+    private ProfileImageListener listener;
+
+    public void setProfileImageListener(ProfileImageListener listener) {
+        this.listener = listener;
+    }
+
     public TweetsArrayAdapter(Context context, List<Tweet> tweets) {
         super(context, android.R.layout.simple_list_item_1, tweets);
+        this.listener = null;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         //return super.getView(position, convertView, parent);
-        Tweet tweet = getItem(position);
+        final Tweet tweet = getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_tweet, parent, false );
         }
 
         ImageView profileImg  = (ImageView) convertView.findViewById(R.id.ivProfileImage);
+        profileImg = (ImageView) convertView.findViewById(R.id.ivProfileImage);
+        profileImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(getContext(), "Clicked " + position , Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "Firing event onProfileImgSelected", Toast.LENGTH_SHORT).show();
+                listener.onProfileImgSelected(tweet.getUser());
+            }
+        });
+
+
+
         TextView tvUsername  = (TextView) convertView.findViewById(R.id.tvUserName);
         TextView tvText  = (TextView) convertView.findViewById(R.id.tvBody);
         TextView tvTime = (TextView) convertView.findViewById(R.id.tvTime);
