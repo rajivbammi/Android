@@ -81,7 +81,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     public void populateUserHeader(User user) {
-        ImageView ivProfileImg = (ImageView) findViewById(R.id.ivUserProfileImg);
+        ImageView ivProfileImg = (ImageView) findViewById(R.id.ivProfileImage);
         TextView tvTagline = (TextView) findViewById(R.id.tvProfileTag);
         TextView tvProfileName = (TextView) findViewById(R.id.tvProfileName);
         TextView tvFollowing = (TextView) findViewById(R.id.tvFollowing);

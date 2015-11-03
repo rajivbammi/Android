@@ -2,6 +2,7 @@ package com.codepath.apps.restclienttemplate.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,7 @@ public class TweetsListFragment extends android.support.v4.app.Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //return super.onCreateView(inflater, container, savedInstanceState);
+        Log.i("DEBUG", "inside onCreateView of Tweets list fragment");
         View v = inflater.inflate(R.layout.fragment_tweets_list, container, false);
         lvTweets = (ListView) v.findViewById(R.id.lvTimeline);
         lvTweets.setAdapter(aTweets);
@@ -38,6 +39,8 @@ public class TweetsListFragment extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("DEBUG", "inside oncreate of Tweets list fragment");
+
         tweets = new ArrayList<>();
         aTweets = new TweetsArrayAdapter(getActivity(), tweets);
     }

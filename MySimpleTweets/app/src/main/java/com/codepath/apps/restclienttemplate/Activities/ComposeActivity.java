@@ -71,8 +71,6 @@ public class ComposeActivity extends AppCompatActivity {
             client.composeTweet(tweetTxt, new AsyncHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                    //Toast.makeText(getApplicationContext(), "Message posted successfully",
-                            //Toast.LENGTH_SHORT).show();
                     Log.i("DEBUG", "Message posted successfully");
                     Intent data = new Intent();
                     setResult(RESULT_OK, data);

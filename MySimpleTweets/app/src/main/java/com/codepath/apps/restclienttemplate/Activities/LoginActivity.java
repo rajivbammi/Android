@@ -19,7 +19,6 @@ public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
 		setContentView(R.layout.activity_login);
 	}
 
-
 	// Inflate the menu; this adds items to the action bar if it is present.
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -31,9 +30,6 @@ public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
 	// i.e Display application "homepage"
 	@Override
 	public void onLoginSuccess() {
-		// Intent i = new Intent(this, PhotosActivity.class);
-		// startActivity(i);
-		// Toast.makeText(this, "Login successful!!", Toast.LENGTH_SHORT).show();
         Intent i  = new Intent(this, TimelineActivity.class);
 		TwitterClient client = TwitterApplication.getRestClient();
 

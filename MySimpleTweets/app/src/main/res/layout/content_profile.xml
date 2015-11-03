@@ -21,7 +21,7 @@
         <ImageView
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:id="@+id/ivUserProfileImg"
+            android:id="@+id/ivProfileImage"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_marginRight="10dp"
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="Name"
             android:id="@+id/tvProfileName"
-            android:layout_toRightOf="@id/ivUserProfileImg"
+            android:layout_toRightOf="@id/ivProfileImage"
             android:textSize="16dp" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:text="Tagline"
             android:id="@+id/tvProfileTag"
             android:layout_toLeftOf="@id/tvProfileName"
-            android:layout_below="@id/ivUserProfileImg"
+            android:layout_below="@id/ivProfileImage"
             android:textSize="12sp"/>
     </RelativeLayout>
 

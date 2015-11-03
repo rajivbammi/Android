@@ -25,8 +25,8 @@ import java.util.Locale;
  */
 public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
 
+    // Creating custom listener
     public interface ProfileImageListener {
-        // These methods are the different events and need to pass relevant arguments with the event
         public void onProfileImgSelected(User user);
     }
 
@@ -50,17 +50,14 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
         }
 
         ImageView profileImg  = (ImageView) convertView.findViewById(R.id.ivProfileImage);
-        profileImg = (ImageView) convertView.findViewById(R.id.ivProfileImage);
         profileImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getContext(), "Clicked " + position , Toast.LENGTH_SHORT).show();
-                //Toast.makeText(getContext(), "Firing event onProfileImgSelected", Toast.LENGTH_SHORT).show();
-                listener.onProfileImgSelected(tweet.getUser());
+                if(listener != null) {
+                    listener.onProfileImgSelected(tweet.getUser());
+                }
             }
         });
-
-
 
         TextView tvUsername  = (TextView) convertView.findViewById(R.id.tvUserName);
         TextView tvText  = (TextView) convertView.findViewById(R.id.tvBody);
@@ -77,7 +74,6 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
                 .transform(new CircleTransform())
                 .into(profileImg);
 
-        //Log.i("DEBUG", tweet.getUid().toString());
         return convertView;
     }
 
