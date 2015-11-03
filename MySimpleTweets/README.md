@@ -37,3 +37,4 @@ Twitter android client
 
 
 ![Video Walkthrough](walkthrough.gif)
+![Video Walkthrough](walkthrough1.gif)

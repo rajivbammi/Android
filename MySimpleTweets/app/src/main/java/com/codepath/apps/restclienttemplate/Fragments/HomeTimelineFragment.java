@@ -31,7 +31,6 @@ public class HomeTimelineFragment extends TweetsListFragment {
             @Override
             public void onProfileImgSelected(User user) {
                 Intent i = new Intent(getContext(), ProfileActivity.class);
-               // i.putExtra("screen_name", user.getScreenName());
                 i.putExtra("user", user);
                 Toast.makeText(getContext(), "Event fired", Toast.LENGTH_SHORT).show();
                 startActivity(i);
@@ -47,10 +46,7 @@ public class HomeTimelineFragment extends TweetsListFragment {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                //super.onSuccess(statusCode, headers, response);
-                //Log.i("Debug", "response: " + response.toString());
-                //Log.i("Debug", "length: " + response.length());
-                addAll(Tweet.fromJsonArray(response));
+               addAll(Tweet.fromJsonArray(response));
                 //swipeContainer.setRefreshing(false);
             }
 

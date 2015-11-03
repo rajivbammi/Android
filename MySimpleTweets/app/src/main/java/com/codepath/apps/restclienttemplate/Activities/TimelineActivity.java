@@ -85,18 +85,6 @@ public class TimelineActivity extends AppCompatActivity {
         startActivityForResult(i, REQUEST_CODE_COMPOSE);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_COMPOSE && resultCode == RESULT_OK) {
-           // Log.i("DEBUG", "REQUEST_CODE: "+ requestCode);
-           // Log.i("DEBUG", "SUCCESS_CODE: " + resultCode);
-             //aTweets.clear();
-             //tweets.clear();
-            //populateTimeLine(0);
-        }
-    }
-
     public class TweetsPagerAdapter extends FragmentPagerAdapter {
         private String tabTitles[] = {"Home", "Mentions"};
 
@@ -106,7 +94,6 @@ public class TimelineActivity extends AppCompatActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            //return super.getPageTitle(position);
             return tabTitles[position];
         }
 
