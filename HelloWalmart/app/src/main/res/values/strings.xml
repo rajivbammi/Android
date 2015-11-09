@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">HelloWalmart</string>
-    <string name="Speak" />
-    <string name="label_speak">Speak</string>
+    <string name="action_settings">Settings</string>
 </resources>

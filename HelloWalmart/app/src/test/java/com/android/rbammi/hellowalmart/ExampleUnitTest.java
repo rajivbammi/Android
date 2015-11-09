@@ -1,4 +1,4 @@
-package com.example.rbammi.hellowalmart;
+package com.android.rbammi.hellowalmart;
 
 import org.junit.Test;
 
